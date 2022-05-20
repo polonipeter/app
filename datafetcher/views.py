@@ -15,8 +15,8 @@ def authorize_user(request):
       'redirect_uri': 'http://localhost:8000/datafetcher/authorize/get_top',
       'state':state,
     }
-    user = get('https://accounts.spotify.com/authorize',params=data)
-    redirecturl = user.url
+    res = get('https://accounts.spotify.com/authorize',params=data)
+    redirecturl = res.url
     return HttpResponseRedirect(redirecturl)
 
 def get_access(request):
@@ -40,44 +40,44 @@ def get_access(request):
     user.popularity = get_str(ret2) 
     user.interpret = get_str(ret3) 
     ret = format_data(ret, ret2, ret3)
-    return render(request, "index.html", {"name": ret})
+    return render(request, "index.html", {"data": ret})
 
 def avegare_count(request):
-  ret = average(user.popularity)
-  name = unlock(user.name)
-  popularity = unlock(user.popularity)
-  interpret = unlock(user.interpret)
-  info = format_data(name, popularity, interpret)
-  info[0].append(ret)
-  return render(request, "average.html", {"name": info})
+    ret = average(user.popularity)
+    name = unlock(user.name)
+    popularity = unlock(user.popularity)
+    interpret = unlock(user.interpret)
+    info = format_data(name, popularity, interpret)
+    info[0].append(ret)
+    return render(request, "average.html", {"data": info})
 
 def sort_by_alph(request):
-  name = unlock(user.name)
-  popularity = unlock(user.popularity)
-  interpret = unlock(user.interpret)
-  info = format_data(name, popularity, interpret)
-  info = sort_a(info, 0)
-  return render(request, "sort_a.html", {"name": info})
+    name = unlock(user.name)
+    popularity = unlock(user.popularity)
+    interpret = unlock(user.interpret)
+    info = format_data(name, popularity, interpret)
+    info = sort_a(info, 0)
+    return render(request, "sort_a.html", {"data": info})
 
 def sort_by_pop(request):
-  name = unlock(user.name)
-  popularity = unlock(user.popularity)
-  interpret = unlock(user.interpret)
-  info = format_data(name, popularity, interpret)
-  info = sort_a(info, 1)
-  return render(request, "sort_p.html", {"name": reversed(info)})
+    name = unlock(user.name)
+    popularity = unlock(user.popularity)
+    interpret = unlock(user.interpret)
+    info = format_data(name, popularity, interpret)
+    info = sort_a(info, 1)
+    return render(request, "sort_p.html", {"data": reversed(info)})
 
 def sort_by_inter(request):
-  name = unlock(user.name)
-  popularity = unlock(user.popularity)
-  interpret = unlock(user.interpret)
-  info = format_data(name, popularity, interpret)
-  info = sort_a(info, 2)
-  return render(request, "sort_i.html", {"name": info})
+    name = unlock(user.name)
+    popularity = unlock(user.popularity)
+    interpret = unlock(user.interpret)
+    info = format_data(name, popularity, interpret)
+    info = sort_a(info, 2)
+    return render(request, "sort_i.html", {"data": info})
 
 def basic(request):
     name = unlock(user.name)
     popularity = unlock(user.popularity)
     interpret = unlock(user.interpret)
     info = format_data(name, popularity, interpret)
-    return render(request, "index.html", {"name": info})
+    return render(request, "index.html", {"data": info})

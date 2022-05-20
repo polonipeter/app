@@ -7,3 +7,6 @@ To run this app python(django) is needed. Server is launched by command python3 
 asks for user authorization, if this wasnt already done before user should be redirected to spotify and will be asked to login and confirm sharing of information.
 After authorization is completed user will be redirected back to app and will be able to see desired data. App was tested in Chrome and Firefox environment.
 
+##User account
+login email: testspotifyapi@gmail.com
+password: Test123@4

@@ -2,7 +2,7 @@ from django.shortcuts import render
 from requests import  post, get
 from django.http import HttpResponseRedirect
 from .constants import CLIENTID, CLIENTSECERET
-from .tasks import get_top, parse, format_data, average
+from .tasks import get_top, parse, format_data, average, unlock, get_str
 from .models import user
 
 def authorize_user(request):
@@ -35,9 +35,18 @@ def get_access(request):
     ret = parse(data, 'name')
     ret2 = parse(data, 'popularity')
     ret3 = parse(data, 'name', True)
+    user.access_token = access_token
+    user.name = get_str(ret)  
+    user.popularity = get_str(ret2) 
+    user.interpret = get_str(ret3) 
     ret = format_data(ret, ret2, ret3)
     return render(request, "index.html", {"name": ret})
 
 def avegare_count(request):
-    info = average(user.popularity)
+    ret = average(user.popularity)
+    name = unlock(user.name)
+    popularity = unlock(user.popularity)
+    interpret = unlock(user.interpret)
+    info = format_data(name, popularity, interpret)
+    info[0].append(ret)
     return render(request, "average.html", {"name": info})

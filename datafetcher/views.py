@@ -2,7 +2,8 @@ from django.shortcuts import render
 from requests import  post, get
 from django.http import HttpResponseRedirect
 from .constants import CLIENTID, CLIENTSECERET
-from .tasks import get_top, parse, format_data
+from .tasks import get_top, parse, format_data, average
+from .models import user
 
 def authorize_user(request):
     scope = 'user-top-read'
@@ -36,3 +37,7 @@ def get_access(request):
     ret3 = parse(data, 'name', True)
     ret = format_data(ret, ret2, ret3)
     return render(request, "index.html", {"name": ret})
+
+def avegare_count(request):
+    info = average(user.popularity)
+    return render(request, "average.html", {"name": info})

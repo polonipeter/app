@@ -1,8 +1,23 @@
 from requests import get
 
-
 def average(data):
+    data = unlock(data)
+    out = 0
+    for i in data:
+        out += int(i)
+    return str(out/(len(data)))
+
+def unlock(data):
+    data = data.split("/")
+    data.pop(0)
     return data
+
+def get_str(data):
+    out = ''
+    data = [str(i) for i in data]
+    for i in data:
+        out+= "/" + i 
+    return out
 
 def parse(parse, mode, inlist=None):
     if inlist==None:

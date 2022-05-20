@@ -42,7 +42,7 @@ def parse(parse, mode, inlist=None):
 def format_data(first, second, third):
     out = []
     for i, x, z in zip(first, second, third):
-        out.append([i,x,z])
+        out.append([i,int(x),z])
     return out     
     
 

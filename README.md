@@ -9,6 +9,6 @@ After authorization is completed user will be redirected back to app and will be
 
 ## Account
 Because of user authorization i have created new spotify account (i dindt want to share my personal), this account can serve for testing purposes, if you would like to
-try this app whitout the need of logging in whit your own account feel free to use this one.\n
-login email: testspotifyapi@gmail.com\n
+try this app whitout the need of logging in whit your own account feel free to use this one.     
+login email: testspotifyapi@gmail.com     
 password: Test123@4

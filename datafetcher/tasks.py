@@ -1,5 +1,6 @@
 from requests import get
 from operator import itemgetter
+from django.shortcuts import render
 
 def sort_a(data, index):
     sort = []
@@ -35,8 +36,11 @@ def parse(parse, mode, inlist=None):
     elif inlist==True:
         item = parse.get('items')
         artist = []
-        for i in range(20):
-            artist.append(item[i].get('artists')[0].get('name'))
+        try:
+            for i in range(20):
+                artist.append(item[i].get('artists')[0].get('name'))
+        except:
+            return "not enough data"
         return artist
 
 def format_data(first, second, third):

@@ -35,6 +35,8 @@ def get_access(request):
     ret = parse(data, 'name')
     ret2 = parse(data, 'popularity')
     ret3 = parse(data, 'name', True)
+    if ret=='not enough data' or ret2 =='not enough data' or ret3=='not enough data':
+        return render(request, "error.html", {"data": 'not enough data'})
     user.access_token = access_token
     user.name = get_str(ret)  
     user.popularity = get_str(ret2) 

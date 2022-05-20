@@ -1,0 +1,23 @@
+table{
+    border-collapse: collapse;
+    font-size: 13px;
+    width: 95%;
+    margin: auto;
+    text-align: center;
+    box-shadow: 15px 15px 25px 8px #030608;
+    font-size: 15px;
+    font-family: sans-serif;
+}
+tbody tr {
+    border-bottom: 1px solid #dddddd;
+}
+
+tbody tr:nth-of-type(even) {
+    background-color: #f3f3f3;
+}
+td {
+    padding: 12px 15px;
+}
+tbody tr:last-of-type {
+    border-bottom: 2px solid #009879;
+}

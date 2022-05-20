@@ -1,0 +1,25 @@
+{% load static %}
+<html>
+  <body>
+    <div style="text-align:center">
+    <button onclick="window.location.href='http://localhost:8000/datafetcher/authorize/get_top/sort_by_a';">Sort by Alphabet</button>
+    <button onclick="window.location.href='http://localhost:8000/datafetcher/authorize/get_top/sort_by_p';">Sort by Popularity</button>
+    <button onclick="window.location.href='http://localhost:8000/datafetcher/authorize/get_top/average';">Average Popularity</button>
+    <table class="center">
+        <link href="{% static '/css/style.css' %}" rel="stylesheet" type="text/css">
+        <tr>
+            <th>Songname</th>
+            <th>Popularity</th>
+            <th>Interpret</th>
+        </tr>
+        {% for sub in name %}
+            <tr>
+                {% for r in sub %}
+                <td>{{ r }}</td>
+                {% endfor %}
+            </tr>
+        {% endfor %}        
+    </table>
+    </div>
+  </body>
+</html>

@@ -66,3 +66,11 @@ def sort_by_pop(request):
     info = format_data(name, popularity, interpret)
     info = sort_a(info, 1)
     return render(request, "sort_p.html", {"name": reversed(info)})
+
+def sort_by_inter(request):
+    name = unlock(user.name)
+    popularity = unlock(user.popularity)
+    interpret = unlock(user.interpret)
+    info = format_data(name, popularity, interpret)
+    info = sort_a(info, 2)
+    return render(request, "sort_i.html", {"name": info})

@@ -33,5 +33,6 @@ def get_access(request):
     data = ret.json()
     ret = parse(data, 'name')
     ret2 = parse(data, 'popularity')
-    ret = format_data(ret, ret2)
+    ret3 = parse(data, 'name', True)
+    ret = format_data(ret, ret2, ret3)
     return render(request, "index.html", {"name": ret})

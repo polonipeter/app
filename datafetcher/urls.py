@@ -8,4 +8,5 @@ urlpatterns = [
     path('authorize/get_top/sort_by_a', views.sort_by_alph),
     path('authorize/get_top/sort_by_i', views.sort_by_inter),
     path('authorize/get_top/sort_by_p', views.sort_by_pop),
+    path('authorize/get_top/basic', views.basic),
 ]

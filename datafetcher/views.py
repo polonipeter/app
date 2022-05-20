@@ -2,7 +2,7 @@ from django.shortcuts import render
 from requests import  post, get
 from django.http import HttpResponseRedirect
 from .constants import CLIENTID, CLIENTSECERET
-from .tasks import get_top, parse, format_data, average, unlock, get_str
+from .tasks import get_top, parse, format_data, average, unlock, get_str, sort_a
 from .models import user
 
 def authorize_user(request):
@@ -50,3 +50,11 @@ def avegare_count(request):
     info = format_data(name, popularity, interpret)
     info[0].append(ret)
     return render(request, "average.html", {"name": info})
+
+def sort_by_alph(request):
+    name = unlock(user.name)
+    popularity = unlock(user.popularity)
+    interpret = unlock(user.interpret)
+    info = format_data(name, popularity, interpret)
+    info = sort_a(info, 0)
+    return render(request, "sort_a.html", {"name": info})

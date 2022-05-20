@@ -1,5 +1,9 @@
 from requests import get
 
+
+def average(data):
+    return data
+
 def parse(parse, mode, inlist=None):
     if inlist==None:
         item = parse.get('items')

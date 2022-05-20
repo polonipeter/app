@@ -1,4 +1,10 @@
 from requests import get
+from operator import itemgetter
+
+def sort_a(data, index):
+    info = []
+    info = sorted(data, key=itemgetter(index))
+    return info
 
 def average(data):
     data = unlock(data)

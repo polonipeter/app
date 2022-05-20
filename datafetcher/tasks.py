@@ -2,9 +2,9 @@ from requests import get
 from operator import itemgetter
 
 def sort_a(data, index):
-    info = []
-    info = sorted(data, key=itemgetter(index))
-    return info
+    sort = []
+    sort = sorted(data, key=itemgetter(index))
+    return sort
 
 def average(data):
     data = unlock(data)
@@ -41,12 +41,12 @@ def parse(parse, mode, inlist=None):
 
 def format_data(first, second, third):
     out = []
-    for i, x, z in zip(first, second,third):
+    for i, x, z in zip(first, second, third):
         out.append([i,x,z])
     return out     
     
 
-def get_top(at):
-    header = {'Content-Type': 'application/json','Authorization': "Bearer " + at}
+def get_top(access_token):
+    header = {'Content-Type': 'application/json','Authorization': "Bearer " + access_token}
     res = get('https://api.spotify.com/v1/me/top/tracks',{},headers=header)
     return res

@@ -58,3 +58,11 @@ def sort_by_alph(request):
     info = format_data(name, popularity, interpret)
     info = sort_a(info, 0)
     return render(request, "sort_a.html", {"name": info})
+
+def sort_by_pop(request):
+    name = unlock(user.name)
+    popularity = unlock(user.popularity)
+    interpret = unlock(user.interpret)
+    info = format_data(name, popularity, interpret)
+    info = sort_a(info, 1)
+    return render(request, "sort_p.html", {"name": reversed(info)})

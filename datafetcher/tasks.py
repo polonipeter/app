@@ -1,17 +1,24 @@
 from requests import get
 
-def parse(parse, mode):
-    item = parse.get('items')
-    name = []
-    for i in item:
-        name.append(i.get(mode))
-    return name
+def parse(parse, mode, inlist=None):
+    if inlist==None:
+        item = parse.get('items')
+        name = []
+        for i in item:
+            name.append(i.get(mode))
+        return name
+    elif inlist==True:
+        item = parse.get('items')
+        artist = []
+        for i in range(20):
+            artist.append(item[i].get('artists')[0].get('name'))
+        return artist
 
-def format_data(data, added):
+def format_data(first, second, third):
     out = []
-    for i, x in zip(data, added):
-        out.append([i,x])
-    return out    
+    for i, x, z in zip(first, second,third):
+        out.append([i,x,z])
+    return out     
     
 
 def get_top(at):

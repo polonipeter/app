@@ -43,9 +43,17 @@ def parse(parse, mode, inlist=None):
             return "not enough data"
         return artist
 
+def make_letter_upper(data):
+    data = list(data)
+    data[0]=data[0].upper()
+    data = "".join(data)
+    return data
+
 def format_data(first, second, third):
     out = []
     for i, x, z in zip(first, second, third):
+        i = make_letter_upper(i)
+        z = make_letter_upper(z)
         out.append([i,int(x),z])
     return out     
     

@@ -8,7 +8,7 @@ asks for user authorization, if this wasnt already done before, user should be r
 After authorization is completed user will be redirected back to app and will be able to see desired data. App was tested in Chrome and Firefox environment.
 
 ## Account
-Because of user authorization i have created new spotify account (i dindt want to share my personal), this account can serve for testing purposes, if you would like to
+Because of user authorization i have created new spotify account (i didnt want to share my personal), this account can serve for testing purposes, if you would like to
 try this app whitout the need of logging in whit your own account feel free to use this one.     
 login email: testspotifyapi@gmail.com     
 password: Test123@4
